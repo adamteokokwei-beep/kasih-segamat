@@ -1166,6 +1166,18 @@ html[lang="zh"] .chat-wa{font-family:var(--zh)}
 img.loaded,video.loaded{animation:none;background:none}
 @keyframes shimmer{to{background-position:-150% 0}}
 @media (prefers-reduced-motion:reduce){#boot img,.boot-bar i{animation:none}}
+
+/* prayer section with praying-hands line art */
+.pray-band{position:relative;overflow:hidden;isolation:isolate;margin:56px calc(50% - 50vw) 0;padding:clamp(56px,7vw,88px) max(16px,calc(50vw - var(--wrap,1160px)/2))!important;background:radial-gradient(90% 120% at 100% 0%,color-mix(in srgb,var(--gold) 16%,var(--tint)),var(--tint) 60%)}
+.pray-art-old{position:absolute;right:max(-40px,calc(50vw - var(--wrap,1160px)/2 - 60px));top:50%;transform:translateY(-50%);width:clamp(260px,32vw,440px);height:auto;z-index:-1;fill:color-mix(in srgb,var(--green) 7%,transparent);stroke:color-mix(in srgb,var(--green) 38%,transparent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.pray-band .head{max-width:640px}
+@media (max-width:760px){.pray-art{opacity:.55;width:220px;top:110px;right:-30px;transform:none}}
+
+.pray-art-cell{display:grid;place-items:center;border-radius:16px;background:radial-gradient(70% 70% at 50% 35%,color-mix(in srgb,var(--gold) 30%,transparent),transparent 70%)}
+.pray-hands{width:min(210px,90%);height:auto;fill:none;stroke:var(--green);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.pray-hands .ph-h{fill:color-mix(in srgb,var(--green) 10%,var(--surface))}
+.ph-rays path{stroke:var(--gold);stroke-width:4}
+@media (max-width:700px){.pray-art-cell{display:none}}
 </style>
 
 
@@ -1750,9 +1762,9 @@ function vDonate(){
         </form>
       </div>
     </section>
-    <section class="block pray-sec" style="padding-top:0">
+    <section class="block pray-sec pray-band">
       <div class="head"><div><p class="eyebrow">${t(S.prayEye)}</p><h2>${t(S.prayH)}</h2><p class="lede">${t(S.prayP)}</p></div></div>
-      <div class="pray-grid">${S.pray[LANG].map(([a,b])=>`<div class="pray-card"><b>${a}</b><span>${b}</span></div>`).join('')}</div>
+      <div class="pray-grid">${S.pray[LANG].map(([a,b])=>`<div class="pray-card"><b>${a}</b><span>${b}</span></div>`).join('')}<div class="pray-art-cell" aria-hidden="true"><svg class="pray-hands" viewBox="0 -60 240 340" role="img" aria-label="Praying hands"><g class="ph-rays"><path d="M167.0 4.9 L185.8 -2.0"/><path d="M151.1 -17.2 L163.5 -32.8"/><path d="M120.0 -28.0 L120.0 -48.0"/><path d="M89.0 -17.2 L76.6 -32.9"/><path d="M73.1 4.8 L54.3 -2.1"/></g><g><path class="ph-h" d="M120 26 C131 26 138 37 139 52 L142 116 C143 127 150 133 159 141 C170 151 172 168 165 183 L157 213 L157 246 L120 246 Z"/><path d="M120 136 C130 136 135 145 135 156 C135 168 129 176 120 180 M129 34 C132 42 133 52 133 62 L135 116 M118 246 L159 246 L159 270 L118 270"/></g><g transform="translate(240 0) scale(-1 1)"><path class="ph-h" d="M120 26 C131 26 138 37 139 52 L142 116 C143 127 150 133 159 141 C170 151 172 168 165 183 L157 213 L157 246 L120 246 Z"/><path d="M120 136 C130 136 135 145 135 156 C135 168 129 176 120 180 M129 34 C132 42 133 52 133 62 L135 116 M118 246 L159 246 L159 270 L118 270"/></g></svg></div></div>
     </section>
     <a class="don-faq" href="#faq"><span class="g-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5h.01"/></svg></span><span><b>${t(S.qH)}</b><span class="muted">${t(S.faqP)}</span></span><span class="go">${t(S.faqMore)} →</span></a>
   </div>`;
