@@ -1324,7 +1324,7 @@ const S={
   fvW2:{en:"Families, churches, schools and companies are welcome by appointment.",zh:"欢迎家庭、教会、学校和公司预约探访。"},
   fvW3:{en:"Share a meal, a birthday or a festival, or run an activity day with residents.",zh:"和住户一起用餐、庆祝生日或节日，或举办活动日。"},
   fvP2:{en:"Fill in the form and our coordinator will contact you to arrange the details.",zh:"填写表格后，我们的协调员会联系您安排细节。"},
-  mvNeedEye:{en:"What we need",zh:"我们的需要"},mvNeedH:{en:"Help us build and run the village.",zh:"帮助我们建设和营运怜悯村。"},
+  mvNeedEye:{en:"Aid required",zh:"所需援助"},mvNeedH:{en:"What Mercy Village needs.",zh:"怜悯村的需要。"},
   mvNeedP:{en:"Besides funds for land and buildings, these gifts will keep running costs low for years to come.",zh:"除了购地和建设经费，以下捐献能长期降低营运成本。"},
   mvNeeds:{en:[["Save running costs","Solar panels, water piping, and sponsors for digging a well."],["Building supplies","Cement and other construction materials."],["Furnishing","Beds, kitchen appliances, and equipment for the hall."],["Staff uniforms","Sponsor uniforms for our staff. We will design them."],["Skilled volunteers","Architects, doctors, teachers, farmers who raise animals and grow crops, technicians and more."]],
            zh:[["节省营运成本","太阳能板、水管，以及赞助挖井。"],["建筑材料","水泥及其他建筑材料。"],["家具设备","床、厨房电器，以及礼堂设备。"],["同工制服","赞助同工制服，由我们设计。"],["技术义工","建筑师、医生、老师、懂得饲养和种植的农夫、技术人员等。"]]},
@@ -1852,6 +1852,11 @@ function vMercy(){
     <div><p class="eyebrow">${t(S.mvLandEye)}</p><h2>${t(S.mvLandH)}</h2><p class="lede">${t(S.mvLandP)}</p><p class="mv-slogan">${t(S.mvSlogan)}</p></div>
     <dl class="mv-nums"><div class="big"><dt>RM20M</dt><dd>${LANG==='zh'?'预计建设费用':'estimated building cost'}</dd></div><div><dt>${LANG==='zh'?'土地':'Land'}</dt><dd>${LANG==='zh'?'昔加末县内，募捐中':'in Segamat, seeking donations'}</dd></div><div><dt>500+</dt><dd>${LANG==='zh'?'计划容纳住户':'residents planned'}</dd></div></dl>
   </div></div></section>
+  <section class="block" style="padding-top:0" id="mv-needs"><div class="wrap">
+    <div class="head"><div><p class="eyebrow">${t(S.mvNeedEye)}</p><h2>${t(S.mvNeedH)}</h2><p class="lede">${t(S.mvNeedP)}</p></div></div>
+    <ul class="mvn">${S.mvNeeds[LANG].map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join('')}</ul>
+    <div class="coop"><div><h3>${t(S.mvCoopH)}</h3><p>${t(S.mvCoopP)}</p></div><a class="btn mvs-btn" href="https://wa.me/60193395709" target="_blank" rel="noopener">019-339 5709</a></div>
+  </div></section>
   <section class="block" style="padding-top:0"><div class="wrap">
     <div class="head"><div><p class="eyebrow">${t(S.mvMapEye)}</p><h2>${t(S.mvMapH)}</h2><p class="lede">${t(S.mvMapP)}</p></div></div>
     <figure class="mv-mapfig"><img class="mv-mapimg" src="${IMG['mv-map']}" alt="${LANG==='zh'?'怜悯村概念规划图':'Concept layout of Mercy Village'}" loading="lazy"><figcaption>${t(S.mvMapNote)}</figcaption></figure>
@@ -1863,11 +1868,6 @@ function vMercy(){
     <div class="head"><div><p class="eyebrow">${t(S.mvBuildEye)}</p><h2>${t(S.mvBuildH)}</h2></div></div>
     <ol class="mvb">${S.mvB[LANG].map(([a,b],i)=>`<li class="mvb-${MVB_IC[i][0]}">${MVB_PH[i]?`<img class="mvb-ph" src="${IMG['mv-'+MVB_PH[i]]}" alt="" loading="lazy">`:''}<span class="mvb-ic" aria-hidden="true"><svg viewBox="0 0 24 24">${MVB_IC[i][1]}</svg></span><b>${a}</b><span class="mvb-p">${b}</span></li>`).join('')}</ol>
     <p class="mvb-note">${LANG==='zh'?'图片仅供示意，并非怜悯村实景。':'Photos show the kind of facilities we hope to build; they are not the actual site.'}</p>
-  </div></section>
-  <section class="block" style="padding-top:0"><div class="wrap">
-    <div class="head"><div><p class="eyebrow">${t(S.mvNeedEye)}</p><h2>${t(S.mvNeedH)}</h2><p class="lede">${t(S.mvNeedP)}</p></div></div>
-    <ul class="mvn">${S.mvNeeds[LANG].map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join('')}</ul>
-    <div class="coop"><div><h3>${t(S.mvCoopH)}</h3><p>${t(S.mvCoopP)}</p></div><a class="btn mvs-btn" href="https://wa.me/60193395709" target="_blank" rel="noopener">019-339 5709</a></div>
   </div></section>
   <section class="block goace"><div class="wrap goace-in">
     <div><p class="eyebrow">${t(S.goEye)}</p><h2>${t(S.goH)}</h2><p class="lede">${t(S.goP)}</p></div>
