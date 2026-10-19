@@ -1123,6 +1123,20 @@ html[lang="zh"] .chat-wa{font-family:var(--zh)}
 .mvb .mvb-farm,.mvb .mvb-hall{grid-column:auto!important}
 .mvb li.mvb-hall .mvb-ph,.mvb li.mvb-farm .mvb-ph{aspect-ratio:16/9!important}
 .mvb .mvb-solar{grid-column:1/-1!important}
+
+/* volunteer section layout */
+.nomoney .fv{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.nomoney .fv-intro{position:sticky;top:calc(var(--hdr,84px) + 70px);gap:14px;padding-top:0}
+.nomoney .fv-intro h2{font-size:clamp(28px,3.6vw,42px);margin:0}
+.nomoney .fv-intro .lede{margin:0}
+.fv-ways{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:12px}
+.fv-ways li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.fv-ways b{display:block;font-size:16px;margin-bottom:2px}
+.fv-ways span span,.fv-ways li>span:last-child{color:var(--muted);font-size:14.5px;line-height:1.5}
+.fv-ways li>span:last-child b{color:var(--ink)}
+.fv-ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--tint);color:var(--green)}
+.fv-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:820px){.nomoney .fv{grid-template-columns:1fr}.nomoney .fv-intro{position:static}}
 </style>
 
 
@@ -1268,6 +1282,10 @@ const S={
   zhNote:{en:"",zh:"使命和异象的中文为翻译稿，请核对。"},navCentres:{en:"Our centres",zh:"我们的中心"},navContact:{en:"Contact",zh:"联系我们"},navDonate:{en:"Donate or help",zh:"捐款或帮助"},
   ros:{en:"Registered society no.",zh:"社团注册号码"},
   cFax:{en:"Fax",zh:"传真"},
+  fvW1:{en:"Share your skills or a few hours: tuition, cooking, driving, repairs.",zh:"分享您的技能或时间：补习、煮食、载送、维修。"},
+  fvW2:{en:"Families, churches, schools and companies are welcome by appointment.",zh:"欢迎家庭、教会、学校和公司预约探访。"},
+  fvW3:{en:"Share a meal, a birthday or a festival, or run an activity day with residents.",zh:"和住户一起用餐、庆祝生日或节日，或举办活动日。"},
+  fvP2:{en:"Fill in the form and our coordinator will contact you to arrange the details.",zh:"填写表格后，我们的协调员会联系您安排细节。"},
   mvNeedEye:{en:"What we need",zh:"我们的需要"},mvNeedH:{en:"Help us build and run the village.",zh:"帮助我们建设和营运怜悯村。"},
   mvNeedP:{en:"Besides funds for land and buildings, these gifts will keep running costs low for years to come.",zh:"除了购地和建设经费，以下捐献能长期降低营运成本。"},
   mvNeeds:{en:[["Save running costs","Solar panels, water piping, and sponsors for digging a well."],["Building supplies","Cement and other construction materials."],["Furnishing","Beds, kitchen appliances, and equipment for the hall."],["Staff uniforms","Sponsor uniforms for our staff. We will design them."],["Skilled volunteers","Architects, doctors, teachers, farmers who raise animals and grow crops, technicians and more."]],
@@ -1655,9 +1673,15 @@ function vDonate(){
       <div class="nc-grid">${CATS.map(k=>{const l=inCat(k.id);return `<article class="nc" style="--c:${k.color}">
         <div class="nc-img"><img src="${hero(l[0])}" alt="" loading="lazy"><h3>${t(k.name)}</h3></div>
         <div class="nc-body">${needs(k.needs[LANG])}<p class="nc-homes">${l.map(c=>`<a href="#${c.id}">${t(c.name)}</a>`).join('')}</p></div></article>`}).join('')}</div></div></div>
-    <section class="block nomoney don-sec"><div class="head"><div><p class="eyebrow">${t(S.involvedEye)}</p><h2>${t(S.noMoneyH)}</h2><p class="lede">${t(S.noMoneyP)}</p></div></div>
+    <section class="block nomoney don-sec">
       <div class="fv">
-        <div class="fv-intro"><h3>${t(S.fvH)}</h3><p class="muted">${t(S.fvP)}</p></div>
+        <div class="fv-intro"><p class="eyebrow">${t(S.involvedEye)}</p><h2>${t(S.noMoneyH)}</h2><p class="lede">${t(S.noMoneyP)}</p>
+          <ul class="fv-ways">
+            <li><span class="fv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg></span><span><b>${S.purposes[LANG][0][1]}</b>${t(S.fvW1)}</span></li>
+            <li><span class="fv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></span><span><b>${S.purposes[LANG][1][1]}</b>${t(S.fvW2)}</span></li>
+            <li><span class="fv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20v-7h12v7M9 13V9M15 13V9M12 13V7M12 4v1"/></svg></span><span><b>${S.purposes[LANG][2][1]}</b>${t(S.fvW3)}</span></li>
+          </ul>
+          <p class="muted fine">${t(S.fvP2)}</p></div>
         <form class="vol fv-card" id="volForm" novalidate>
           <fieldset class="purpose"><legend>${t(S.fPurpose)}</legend>
             ${S.purposes[LANG].map(([v,l],i)=>`<label class="pchip"><input type="radio" name="purpose" value="${v}"${i===0?' checked':''}><span>${l}</span></label>`).join('')}
